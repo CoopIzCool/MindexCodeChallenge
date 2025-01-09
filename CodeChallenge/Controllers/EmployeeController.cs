@@ -35,6 +35,7 @@ namespace CodeChallenge.Controllers
         [HttpGet("{id}", Name = "getEmployeeById")]
         public IActionResult GetEmployeeById(String id)
         {
+            
             _logger.LogDebug($"Received employee get request for '{id}'");
 
             var employee = _employeeService.GetById(id);
