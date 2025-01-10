@@ -32,7 +32,8 @@ namespace CodeChallenge.Repositories
 
         public Compensation GetById(string id)
         {
-            return _employeeContext.Compensations.Where(comp => comp.CompensatedEmployee.EmployeeId == id).FirstOrDefault();
+            //return _employeeContext.Compensations.Where(comp => comp.CompensatedEmployee.EmployeeId == id).FirstOrDefault();
+            return _employeeContext.Compensations.Include(c => c.CompensatedEmployee).FirstOrDefault(comp => comp.CompensatedEmployee.EmployeeId == id);
         }
 
         public Task SaveAsync()

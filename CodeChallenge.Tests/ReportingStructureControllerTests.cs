@@ -77,7 +77,7 @@ namespace CodeCodeChallenge.Tests.Integration
             Assert.AreEqual(expectedLastName, reportingStructure.Employee.LastName);
             Assert.AreEqual(expectedReports, reportingStructure.NumberOfReports);
             Assert.AreEqual(firstEmployeeFirstName, reportingStructure.Employee.DirectReports[0].FirstName);
-            Assert.AreEqual(lastEmployeeFirstName, reportingStructure.Employee.DirectReports[3].FirstName);
+            Assert.AreEqual(lastEmployeeFirstName, reportingStructure.Employee.DirectReports[1].DirectReports[1].FirstName);
         }
 
     }

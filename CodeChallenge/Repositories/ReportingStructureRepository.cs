@@ -20,7 +20,7 @@ namespace CodeChallenge.Repositories
         }
         public ReportingStructure GetStructureById(string id)
         {
-            var employeeRef = _employeeContext.Employees.SingleOrDefault(e => e.EmployeeId == id);
+            var employeeRef = _employeeContext.Employees.Include(e => e.DirectReports).ToList().FirstOrDefault(e => e.EmployeeId == id);
 
             int totalReportsFromEmployee = GetNumberOfReportingEmployees(employeeRef);
 

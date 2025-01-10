@@ -10,7 +10,7 @@ using CodeCodeChallenge.Tests.Integration.Helpers;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace CodeChallenge.Tests.Integration
+namespace CodeCodeChallenge.Tests.Integration
 {
     [TestClass]
     public class CompensationControllerTests
@@ -85,9 +85,10 @@ namespace CodeChallenge.Tests.Integration
             // Assert
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
             var compensation = response.DeserializeContent<Compensation>();
-            Assert.AreEqual(expectedFirstName, compensation.CompensatedEmployee.FirstName);
+
             Assert.AreEqual(expectedSalary, compensation.Salary);
             Assert.AreEqual(expectedEffectiveDate,compensation.EffectiveDate);
+            Assert.AreEqual(expectedFirstName, compensation.CompensatedEmployee.FirstName);
         }
     }
 }

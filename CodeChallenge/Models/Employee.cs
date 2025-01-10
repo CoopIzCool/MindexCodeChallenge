@@ -13,6 +13,6 @@ namespace CodeChallenge.Models
         public String Position { get; set; }
         public String Department { get; set; }
         public List<Employee> DirectReports { get; set;}
-        //public ICollection<Employee> DirectReports { get; set; } = new List<Employee>();
+        //public virtual IList<Employee> DirectReports { get; set; } = new List<Employee>();
     }
 }
