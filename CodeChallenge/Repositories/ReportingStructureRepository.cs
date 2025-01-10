@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using CodeChallenge.Models;
-using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using CodeChallenge.Data;
 
@@ -20,6 +16,7 @@ namespace CodeChallenge.Repositories
         }
         public ReportingStructure GetStructureById(string id)
         {
+            //Eagerly loading employees since direct references were not loading
             var employeeRef = _employeeContext.Employees.Include(e => e.DirectReports).ToList().FirstOrDefault(e => e.EmployeeId == id);
 
             int totalReportsFromEmployee = GetNumberOfReportingEmployees(employeeRef);
@@ -33,11 +30,12 @@ namespace CodeChallenge.Repositories
 
         public int GetNumberOfReportingEmployees(Employee employee)
         {
-            //Null catch if theres no reports
+            //Null catch
             if(employee.DirectReports == null)
             {
                 return 0;
             }
+            //Set the count to employees that report directly
             int reportingCount = employee.DirectReports.Count;
 
             //recursively call each reporting employee to return how many report to them

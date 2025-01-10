@@ -2,13 +2,8 @@
 using CodeChallenge.Models;
 using System.Threading.Tasks;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using CodeChallenge.Models;
-using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
-using CodeChallenge.Data;
 
 
 namespace CodeChallenge.Repositories
@@ -25,6 +20,7 @@ namespace CodeChallenge.Repositories
         public Compensation Add(Compensation compensation)
         {
             compensation.CompensationID = Guid.NewGuid().ToString();
+            //To resolve issue of duplicate keys if an employee reference is created. Instead we're storing the existing employee that exists in the context
             compensation.CompensatedEmployee = _employeeContext.Employees.FirstOrDefault(e => e.EmployeeId == compensation.CompensatedEmployee.EmployeeId);
             _employeeContext.Compensations.Add(compensation);
             return compensation;
@@ -32,7 +28,7 @@ namespace CodeChallenge.Repositories
 
         public Compensation GetById(string id)
         {
-            //return _employeeContext.Compensations.Where(comp => comp.CompensatedEmployee.EmployeeId == id).FirstOrDefault();
+            //Eagerly loaded because employees weren't loaded properly
             return _employeeContext.Compensations.Include(c => c.CompensatedEmployee).FirstOrDefault(comp => comp.CompensatedEmployee.EmployeeId == id);
         }
 

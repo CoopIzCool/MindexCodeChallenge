@@ -15,6 +15,7 @@ namespace CodeChallenge.Data
         }
 
         public DbSet<Employee> Employees { get; set; }
+        //Added DBSet to exist in Persistance
         public DbSet<Compensation> Compensations { get; set; }
     }
 }

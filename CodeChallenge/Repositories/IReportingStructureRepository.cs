@@ -1,6 +1,4 @@
 ﻿using CodeChallenge.Models;
-using System;
-using System.Threading.Tasks;
 
 namespace CodeChallenge.Repositories
 {
