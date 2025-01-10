@@ -33,6 +33,11 @@ namespace CodeChallenge.Repositories
 
         public int GetNumberOfReportingEmployees(Employee employee)
         {
+            //Null catch if theres no reports
+            if(employee.DirectReports == null)
+            {
+                return 0;
+            }
             int reportingCount = employee.DirectReports.Count;
 
             //recursively call each reporting employee to return how many report to them
