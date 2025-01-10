@@ -36,7 +36,7 @@ namespace CodeCodeChallenge.Tests.Integration
 
 
         [TestMethod]
-        public void EmployeeWithNoOneReportingReturnsProperly()
+        public void GetReportingStuctureWithNoDirectReportsById_Returns_Ok()
         {
             var employeeId = "b7839309-3348-463b-a7e3-5de1c168beb3";
             var expectedFirstName = "Paul";
@@ -56,7 +56,7 @@ namespace CodeCodeChallenge.Tests.Integration
         }
 
         [TestMethod]
-        public void EmployeeWithDirectReportsReturnsFullList()
+        public void GetReportingStuctureWithDirectReportsById_Returns_Ok()
         {
             //Arrange
             var employeeId = "16a596ae-edd3-4847-99fe-c4518e82c86f";
