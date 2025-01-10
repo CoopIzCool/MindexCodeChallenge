@@ -14,7 +14,11 @@ namespace CodeChallenge.Services
 
         public ReportingStructure GetStructureById(string id)
         {
-            return _reportingStructureRepository.GetStructureById(id);
+            if(!string.IsNullOrEmpty(id))
+            {
+                return _reportingStructureRepository.GetStructureById(id);
+            }
+            return null;
         }
     }
 }

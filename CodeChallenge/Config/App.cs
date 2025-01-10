@@ -49,6 +49,10 @@ namespace CodeChallenge.Config
             services.AddScoped<IReportingStructureService, ReportingStructureService>();
             services.AddScoped<IReportingStructureRepository, ReportingStructureRepository>();
 
+            //Compensation Data Handling
+            services.AddScoped<ICompensationService, CompensationService>();
+            services.AddScoped<ICompensationRepository, CompensationRepository>();
+
             services.AddControllers();
         }
 
