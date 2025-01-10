@@ -9,8 +9,8 @@ namespace CodeChallenge.Models
 {
     public class Compensation
     {
-        [Key] public string EmployeeCompensationID { get; set; }
-        public Employee Employee { get; set; }
+        public string CompensationID { get; set; }
+        public Employee CompensatedEmployee { get; set; }
         public int Salary { get; set; }
         public DateTime EffectiveDate { get; set; }
     }

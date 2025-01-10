@@ -25,11 +25,11 @@ namespace CodeChallenge.Controllers
         [HttpPost]
         public IActionResult CreateCompensation([FromBody] Compensation compensation)
         {
-            _logger.LogDebug($"Received request to create compensation for '{compensation.EmployeeCompensationID}'");
+            _logger.LogDebug($"Received request to create compensation for '{compensation.CompensationID}'");
 
             _compensationService.Create(compensation);
 
-            return CreatedAtAction("getCompensationById", new { id = compensation.EmployeeCompensationID }, compensation);
+            return CreatedAtAction("getCompensationById", new { id = compensation.CompensationID }, compensation);
         }
 
         [HttpGet("{id}",Name = "getCompensationByEmployeeId")]

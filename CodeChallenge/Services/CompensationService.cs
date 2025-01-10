@@ -14,7 +14,7 @@ namespace CodeChallenge.Services
 
         public Compensation Create(Compensation compensation)
         {
-            if(compensation == null)
+            if(compensation != null)
             {
                 _compensationRepository.Add(compensation);
                 _compensationRepository.SaveAsync().Wait();

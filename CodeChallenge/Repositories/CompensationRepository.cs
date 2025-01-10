@@ -24,13 +24,15 @@ namespace CodeChallenge.Repositories
 
         public Compensation Add(Compensation compensation)
         {
-            _employeeContext.Add(compensation);
+            compensation.CompensationID = Guid.NewGuid().ToString();
+            compensation.CompensatedEmployee = _employeeContext.Employees.FirstOrDefault(e => e.EmployeeId == compensation.CompensatedEmployee.EmployeeId);
+            _employeeContext.Compensations.Add(compensation);
             return compensation;
         }
 
         public Compensation GetById(string id)
         {
-            return _employeeContext.Compensations.Where(comp => comp.EmployeeCompensationID == id).FirstOrDefault();
+            return _employeeContext.Compensations.Where(comp => comp.CompensatedEmployee.EmployeeId == id).FirstOrDefault();
         }
 
         public Task SaveAsync()
